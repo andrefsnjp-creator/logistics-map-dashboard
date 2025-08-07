@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Logístico Interativo - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-map-marked-alt"></i> Mapa Logístico Interativo - Dashboard</h1>
+            <div class="header-actions">
+                <button id="fullscreen-btn" class="btn btn-secondary">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button id="theme-toggle" class="btn btn-secondary">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Map Section -->
+            <section class="map-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-route"></i> Mapa Logístico</h2>
+                    <div class="map-controls">
+                        <button id="refresh-map" class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i> Atualizar
+                        </button>
+                    </div>
+                </div>
+                <div class="map-wrapper">
+                    <div id="logistics-map">
+        <h2>Mapa Logístico Interativo</h2>
+        <div id="map-container" style="height: 400px; border: 1px solid #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <p>Carregando mapa logístico...</p>
+        </div>
+      </div>
+                </div>
+            </section>
+
+            <!-- AI Agent Section -->
+            <section class="ai-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-robot"></i> Agente IA Logístico</h2>
+                    <div class="ai-controls">
+                        
+                        <button id="voice-btn" class="btn btn-voice">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        
+                        <button id="clear-chat" class="btn btn-secondary">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Olá! Sou seu assistente de logística. Como posso ajudar você hoje?</p>
+                                <small class="message-time">Agora</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="chat-input" 
+                                placeholder="Digite sua pergunta sobre logística..."
+                                autocomplete="off"
+                            >
+                            <button id="send-btn" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h3><i class="fas fa-bolt"></i> Ações Rápidas</h3>
+                <div class="actions-grid">
+                    <button class="action-card" data-action="analyze-routes">
+                        <i class="fas fa-analytics"></i>
+                        <span>Analisar Rotas</span>
+                    </button>
+                    <button class="action-card" data-action="track-vehicles">
+                        <i class="fas fa-truck"></i>
+                        <span>Rastrear Veículos</span>
+                    </button>
+                    <button class="action-card" data-action="optimize-delivery">
+                        <i class="fas fa-route"></i>
+                        <span>Otimizar Entregas</span>
+                    </button>
+                    <button class="action-card" data-action="view-alerts">
+                        <i class="fas fa-bell"></i>
+                        <span>Ver Alertas</span>
+                    </button>
+                </div>
+            </section>
+
+            
+            <!-- Documentation Section -->
+            <section class="docs-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> Documentação</h2>
+                    <button id="toggle-docs" class="btn btn-secondary">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div id="docs-content" class="docs-content collapsed">
+                    <div class="docs-tabs">
+                        <button class="tab-btn active" data-tab="usage">Uso</button>
+                        <button class="tab-btn" data-tab="features">Recursos</button>
+                        <button class="tab-btn" data-tab="shortcuts">Atalhos</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="usage-tab" class="tab-panel active">
+                            <h4>Como Usar</h4>
+                            <ul>
+                                <li>Visualize o mapa logístico na seção principal</li>
+                                <li>Use o chat para fazer perguntas ao agente IA</li>
+                                <li>Clique nas ações rápidas para funcionalidades específicas</li>
+                                <li>Use comandos de voz clicando no ícone do microfone</li>
+                            </ul>
+                        </div>
+                        <div id="features-tab" class="tab-panel">
+                            <h4>Recursos Disponíveis</h4>
+                            <ul>
+                                <li>Mapa interativo em tempo real</li>
+                                <li>Agente IA para consultas logísticas</li>
+                                <li>Interface responsiva para mobile</li>
+                                <li>Modo escuro/claro</li>
+                                <li>Ações rápidas personalizáveis</li>
+                            </ul>
+                        </div>
+                        <div id="shortcuts-tab" class="tab-panel">
+                            <h4>Atalhos de Teclado</h4>
+                            <ul>
+                                <li><kbd>Enter</kbd> - Enviar mensagem</li>
+                                <li><kbd>Ctrl + /</kbd> - Focar no chat</li>
+                                <li><kbd>Ctrl + R</kbd> - Atualizar mapa</li>
+                                <li><kbd>F11</kbd> - Tela cheia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Sistema Logístico Inteligente. Criado com Pipedream.</p>
+        </footer>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Processando...</p>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
